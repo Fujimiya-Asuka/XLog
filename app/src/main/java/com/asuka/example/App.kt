@@ -9,7 +9,7 @@ class App : Application() {
         super.onCreate()
         //init XLog
         XLog.getInstance()
-            .enableDiskLog(false)
+            .enableDiskLog(true)
             .setLogFileSize(300)
             .setDiskLogLevel(4)
             .init(this)

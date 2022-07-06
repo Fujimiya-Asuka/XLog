@@ -6,11 +6,14 @@ import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.DiskLogAdapter;
 import com.orhanobut.logger.Logger;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class XLog {
-    public static volatile XLog mXLog;
+    private static volatile XLog mXLog;
     private static String appName;
     private static String logPath;
     private Boolean enableConsoleLog=true;
@@ -92,6 +95,17 @@ public class XLog {
 
     public static int getLogFileSize(){
         return logFileSize;
+    }
+
+    public static List<File> getAllLogFiles(){
+        File file = new File(logPath);
+        if (file.exists()){
+            ArrayList<File> files = new ArrayList<>();
+            Collections.addAll(files,file.listFiles());
+            return files;
+        }else {
+            return null ;
+        }
     }
 
     /**
