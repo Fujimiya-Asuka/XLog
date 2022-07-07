@@ -45,6 +45,9 @@ public class XLog {
         }
     }
 
+    /**
+     *  获取日志文件路径
+     */
     public static String getLogPath(){
          return logPath;
     }
@@ -141,8 +144,8 @@ public class XLog {
         File[] files = new File(logPath).listFiles();
         if (files.length>0) {
             for (File file : files) {
-                if (new Date(file.lastModified() + x * 24 * 3600 * 1000).before(new Date())) {
-                    Logger.d("删除日志");
+                if (new Date(file.lastModified() + (long) x * 24 * 3600 * 1000).before(new Date())) {
+                    deleteLogFile();
                 }
             }
         }
